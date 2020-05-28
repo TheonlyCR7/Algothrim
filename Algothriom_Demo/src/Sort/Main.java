@@ -3,6 +3,8 @@ package Sort;
 
 import java.io.*;
 
+import static Sort.SortExample.isSorted;
+
 public class Main {
     public static void main(String[] args) {
 
@@ -34,33 +36,38 @@ public class Main {
                 SelectSort.sort(testArray);
                 long endTime1 = System.nanoTime();
                 System.out.println(
-                        "选择排序，1000个数据，执行时间为：" +
+                        "选择排序，32000个数据，执行时间为：" +
                                 (endTime1 - startTime1) / 1000000000.0 + " s");
 
                 long startTime2 = System.nanoTime();
                 insertSort.sort(testArray);
                 long endTime2 = System.nanoTime();
                 System.out.println(
-                        "插入排序，1000个数据，执行时间为：" +
+                        "插入排序，32000个数据，执行时间为：" +
                                 (endTime2 - startTime2) / 1000000000.0 + " s");
 
                 long startTime3 = System.nanoTime();
                 ShellSort.sort(testArray);
                 long endTime3 = System.nanoTime();
                 System.out.println(
-                        "希尔排序，1000个数据，执行时间为：" +
+                        "希尔排序，32000个数据，执行时间为：" +
                                 (endTime3 - startTime3) / 1000000000.0 + " s");
 
                 long startTime4 = System.nanoTime();
                 MergeSort.sort(testArray);
                 long endTime4 = System.nanoTime();
                 System.out.println(
-                        "归并排序，1000个数据，执行时间为：" +
+                        "自顶向下归并排序，32000个数据，执行时间为：" +
                                 (endTime4 - startTime4) / 1000000000.0 + " s");
 
-                // System.out.println(Arrays.toString(testArray));
+                long startTime5 = System.nanoTime();
+                MergeSort.sort(testArray);
+                long endTime5 = System.nanoTime();
+                System.out.println(
+                        "自底向上归并排序，32000个数据，执行时间为：" +
+                                (endTime5 - startTime5) / 1000000000.0 + " s");
 
-                // 关闭流
+
                 br.close();
                 fileReader.close();
             } catch (FileNotFoundException e) {
@@ -68,6 +75,8 @@ public class Main {
                 e.printStackTrace();
             } catch (IOException e) {
                 System.out.println("io exception");
+                e.printStackTrace();
+            } catch (Exception e) {
                 e.printStackTrace();
             }
         }
