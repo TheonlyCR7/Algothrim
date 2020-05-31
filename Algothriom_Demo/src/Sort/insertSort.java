@@ -9,7 +9,6 @@ public class insertSort {
         Comparable[] a = new Comparable[b.length];
         System.arraycopy(b, 0, a, 0, b.length);
 
-        ArrayList 
         int N = a.length;
         for(int i = 0; i < N; i ++){
             // 循环时要保证当前索引数据小于左边的数据  否则终止循环

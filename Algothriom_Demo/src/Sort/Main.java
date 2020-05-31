@@ -29,9 +29,7 @@ public class Main {
                     i ++;
                 }
 
-                // System.out.println(Arrays.toString(testArray));
 
-                // 计时器
                 long startTime1 = System.nanoTime();
                 SelectSort.sort(testArray);
                 long endTime1 = System.nanoTime();
@@ -73,6 +71,27 @@ public class Main {
                 System.out.println(
                         "快速排序，1000个数据，执行时间为：" +
                                 (endTime6 - startTime6) / 1000000000.0 + " s");
+
+                long startTime7 = System.nanoTime();
+                QuickSortpro1.sort(testArray);
+                long endTime7 = System.nanoTime();
+                System.out.println(
+                        "快速排序改进1，1000个数据，执行时间为：" +
+                                (endTime7 - startTime7) / 1000000000.0 + " s");
+
+                long startTime8 = System.nanoTime();
+                QuickSortpro2.sort(testArray);
+                long endTime8 = System.nanoTime();
+                System.out.println(
+                        "快速排序改进2，1000个数据，执行时间为：" +
+                                (endTime8 - startTime8) / 1000000000.0 + " s");
+
+                long startTime9 = System.nanoTime();
+                QuickSortpro1.sort(testArray);
+                long endTime9 = System.nanoTime();
+                System.out.println(
+                        "快速排序改进3，1000个数据，执行时间为：" +
+                                (endTime9 - startTime9) / 1000000000.0 + " s");
 
 
                 br.close();
