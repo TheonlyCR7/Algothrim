@@ -1,6 +1,8 @@
 package Sort;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.List;
 
 import static Sort.SortExample.*;
 
@@ -23,5 +25,15 @@ public class SelectSort {
         if(!isSorted(a))
             System.out.println("选择排序失败");
         // System.out.println(Arrays.toString(a));
+    }
+
+    public static void main(String[] args) {
+        // "EASYQUESTION"
+//        char[] str= {'E', 'A'};
+//        sort(str);
+        String[] arr = {"a","b","c"};
+        List<String> list = Arrays.asList(arr);	//将数组转换成集合
+        
+
     }
 }
