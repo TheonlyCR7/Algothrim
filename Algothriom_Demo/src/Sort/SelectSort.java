@@ -6,7 +6,7 @@ import java.util.List;
 
 import static Sort.SortExample.*;
 
-// 快速排序
+// 选择排序
 public class SelectSort {
     public static void sort(Comparable[] b){
 
@@ -27,13 +27,4 @@ public class SelectSort {
         // System.out.println(Arrays.toString(a));
     }
 
-    public static void main(String[] args) {
-        // "EASYQUESTION"
-//        char[] str= {'E', 'A'};
-//        sort(str);
-        String[] arr = {"a","b","c"};
-        List<String> list = Arrays.asList(arr);	//将数组转换成集合
-        
-
-    }
 }

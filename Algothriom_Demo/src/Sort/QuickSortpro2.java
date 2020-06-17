@@ -24,7 +24,6 @@ public class QuickSortpro2 {
         StdRandom.shuffle(a);   // 调用了algs4.jar 中的源代码
         sort(a, 0, a.length-1);   // 默认切分元素为第一个元素
 
-        System.out.println(Arrays.toString(a));
 
         if(!isSorted(a))
             System.out.println("快速排序2失败");
@@ -70,7 +69,7 @@ public class QuickSortpro2 {
             v = a[lo+(hi-lo+1)/2];
         else
             v = a[lo];
-        System.out.println("切分元素为" + v);
+//        System.out.println("切分元素为" + v);
         // 扫描左右，检查扫描是否结束并交换元素
         while (true){
             while (less(a[++i], v))   // 左标记不断向右移动，直到有元素>=切分元素
@@ -81,12 +80,12 @@ public class QuickSortpro2 {
                     break;
             if(i >= j)       // 当左标记与右标记重合，跳出大循环
                 break;
-            System.out.println("要交换的元素是" + a[i] + ", " + a[j]);
-            System.out.println(Arrays.toString(a));
+//            System.out.println("要交换的元素是" + a[i] + ", " + a[j]);
+//            System.out.println(Arrays.toString(a));
             exch(a, i, j);   // 当左右标记满足条件停止移动时，交换标记所在的元素
         }
         exch(a, lo, j);    // 将 v= a[j] 放入正确的位置
-        System.out.println(j);
+//        System.out.println(j);
         return j;          // 返回切分元素索引，此时a[j] 左右两侧完成排序
     }
 
@@ -97,7 +96,6 @@ public class QuickSortpro2 {
             test2[i] = random.nextInt(100);
         System.out.println(Arrays.toString(test2));
         sort(test2);
-
     }
 
 }

@@ -31,11 +31,4 @@ public class ShellSort {
             System.out.println("希尔排序失败");
     }
 
-    public static void main(String[] args) {
-        Comparable[] test2 = new Comparable[10];
-        Random random = new Random();
-        for(int i = 0; i < 10; i ++)
-            test2[i] = random.nextInt(100);
-        sort(test2);
-    }
 }
