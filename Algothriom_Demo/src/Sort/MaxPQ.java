@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 
 import static Sort.SortExample.less;
 
-// 通过堆实现优先队列
+// 通过堆实现最大优先队列
 public class MaxPQ<Key> implements Iterable<Key> {
     private Key[] pq;                    // 将元素存储在 1 到 n 之间  0处不传值
     private int n;                       // 节点的数量
