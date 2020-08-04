@@ -15,7 +15,7 @@ public class MaxPQ<Key> implements Iterable<Key> {
     private Comparator<Key> comparator;  // optional comparator
 
 
-    // 传入数组的
+    // 传入堆的容量
     public MaxPQ(int initCapacity) {
         pq = (Key[]) new Object[initCapacity + 1];
         n = 0;
