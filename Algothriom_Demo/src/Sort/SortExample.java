@@ -10,6 +10,9 @@ public class SortExample {
         //排序算法实现
     }
 
+    // v > w true
+    // v = w 返回0
+    // v < w false
     public static boolean less(Comparable v, Comparable w){
         //对元素进行比较
         return v.compareTo(w)<0;
@@ -22,16 +25,18 @@ public class SortExample {
         a[j]=t;
     }
 
+    //在单行中打印数组
     public static void show(Comparable[] a){
-        //在单行中打印数组
+
         for(int i=0;i<a.length;i++){
             System.out.print(a[i]+"");
             System.out.println();
         }
     }
 
+    //测试数组元素是否有序
     public static boolean isSorted(Comparable[] a){
-        //测试数组元素是否有序
+
         for(int i=1;i<a.length;i++){
             if(less(a[i],a[i-1])){
                 return false;
@@ -49,7 +54,5 @@ public class SortExample {
             assert isSorted(a);
             show(a);
         }
-
-
     }
 }

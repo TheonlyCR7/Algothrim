@@ -8,6 +8,6 @@ import java.util.Set;
 
 public class array3 {
     public int singleNumber(int[] nums) {
-        
+        return 0;
     }
 }

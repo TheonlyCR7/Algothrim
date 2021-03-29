@@ -1,5 +1,6 @@
 package Array;
 
+// 合理卖股票
 public class array2 {
     public int maxProfit(int[] prices) {
         // 有差就卖以换取更多交易

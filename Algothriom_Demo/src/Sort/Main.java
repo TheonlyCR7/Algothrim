@@ -28,7 +28,6 @@ public class Main {
                     i ++;
                 }
 
-
                 long startTime1 = System.nanoTime();
                 SelectSort.sort(testArray);
                 long endTime1 = System.nanoTime();
@@ -98,12 +97,14 @@ public class Main {
                 for(Comparable element:testArray)
                     unorderedArrayTopM.insert(element);
                 long endTime10 = System.nanoTime();
-                long startTime11 = System.nanoTime();
-                unorderedArrayTopM.delMax();
-                long endTime11 = System.nanoTime();
                 System.out.println(
                         "无序数组实现的优先队列, 添加" + testArray.length + "个数据，执行时间为：" +
                                 (endTime10 - startTime10) / 1000000000.0 + " s");
+
+                long startTime11 = System.nanoTime();
+                unorderedArrayTopM.delMax();
+                long endTime11 = System.nanoTime();
+
                 System.out.println(
                         "无序数组实现的优先队列, 删除最大元素，执行时间为：" +
                                 (endTime11 - startTime11) / 1000000000.0 + " s");
@@ -139,6 +140,13 @@ public class Main {
                 System.out.println(
                         "基于堆实现的优先队列, 删除最大元素，执行时间为：" +
                                 (endTime15 - startTime15) / 1000000000.0 + " s");
+
+                long startTime16 = System.nanoTime();
+                BubbleSort.sort(testArray);
+                long endTime16 = System.nanoTime();
+                System.out.println(
+                        "冒泡排序, " + testArray.length + "个数据，执行时间为：" +
+                                (endTime16 - startTime16) / 1000000000.0 + " s");
 
 
                 br.close();
