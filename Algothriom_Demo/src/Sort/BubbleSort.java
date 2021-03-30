@@ -2,6 +2,7 @@ package Sort;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 import static Sort.SortExample.*;
 
@@ -18,8 +19,8 @@ public class BubbleSort {
 
         for(int i = 0; i < a.length-1; i ++){
             for(int j = 0; j <a.length-i-1; j ++){
-                if(less(a[j], a[j+1]))
-                    exch(a, j, j+1);
+                if(!less(a[j], a[j+1]))
+                    exch(a, j, j + 1);
             }
         }
 
@@ -29,12 +30,15 @@ public class BubbleSort {
     }
 
     public static void main(String[] args) {
-        String[] array = new String[10];
-        Random random = new Random();
-        for(int i = 0; i < array.length; i ++)
-            array[i] = random.
 
-        System.out.println(array.toString());
+        String[] array = new String[10];
+        for(int i = 0; i < array.length; i ++)
+            array[i] = (char)(74 - i) + "";
+
+        System.out.print("array:");
+        for(int j = 0;j < array.length; j ++)
+            System.out.print(array[j] + ", ");
+        System.out.println();
 
         BubbleSort.sort(array);
     }

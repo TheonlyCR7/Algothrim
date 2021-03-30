@@ -148,6 +148,13 @@ public class Main {
                         "冒泡排序, " + testArray.length + "个数据，执行时间为：" +
                                 (endTime16 - startTime16) / 1000000000.0 + " s");
 
+                long startTime17 = System.nanoTime();
+                binaryInsertSort.sort(testArray);
+                long endTime17 = System.nanoTime();
+                System.out.println(
+                        "折半插入排序, " + testArray.length + "个数据，执行时间为：" +
+                                (endTime17 - startTime17) / 1000000000.0 + " s");
+
 
                 br.close();
                 fileReader.close();

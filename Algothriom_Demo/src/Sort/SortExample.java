@@ -10,12 +10,11 @@ public class SortExample {
         //排序算法实现
     }
 
-    // v > w true
-    // v = w 返回0
-    // v < w false
+    // v >= w false
+    // v < w true
     public static boolean less(Comparable v, Comparable w){
         //对元素进行比较
-        return v.compareTo(w)<0;
+        return v.compareTo(w) < 0;
     }
 
     public static void exch(Comparable[] a,int i,int j){
