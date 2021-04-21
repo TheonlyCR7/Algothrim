@@ -1,9 +1,5 @@
 package Sort;
 
-import java.util.ArrayList;
-import java.util.Random;
-import java.util.Scanner;
-
 import static Sort.SortExample.*;
 
 // 冒泡排序

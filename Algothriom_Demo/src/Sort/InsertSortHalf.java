@@ -1,5 +1,7 @@
 package Sort;
 
+import java.util.Random;
+
 import static Sort.SortExample.isSorted;
 import static Sort.SortExample.less;
 
@@ -12,8 +14,8 @@ public class InsertSortHalf {
         int N = a.length;
         for(int i = 0; i < N; i ++){
             for(int j = i;j > 0 && less(a[j], a[j-1]); j--){
-                a = HalfSeek(a, j);
-//                printer(a, j);
+                HalfSeek(a, j);
+                printer(a, j);
             }
         }
 
@@ -27,14 +29,23 @@ public class InsertSortHalf {
     public static Comparable[] HalfSeek(Comparable[] a, int i){
 
         int mid = i/2;
+        int low = 0;
+        int high = i;
         // 找到正确的插入点mid
         while(less(a[i], a[mid+1]) && mid != 0){
-            if(mid == i || mid > i)
+            if(mid == i || mid > i || mid + 1 == i)
                 break;
-            if(less(a[i], a[mid-1]) || a[i].compareTo(a[mid-1]) == 0)
-                mid = mid/2;
-            else
-                mid = (mid + i)/2;
+            if(less(a[i], a[mid])) {
+                high = mid;
+                mid = (low + mid) / 2;
+            }
+            else if(a[i].equals(a[mid])){
+                break;
+            }
+            else{
+                low = mid;
+                mid = (mid + high)/2;
+            }
         }
 
         // 交换位置
@@ -56,13 +67,33 @@ public class InsertSortHalf {
         System.out.println();
     }
 
+    // 打乱数组
+    public static String[] reOrder(String[] array){
+        Random random = new Random();
+        String mid = null;
+        for(int i = 0; i < array.length; i ++){
+            int j = random.nextInt(26);
+            mid = array[i];
+            array[i] = array[j];
+            array[j] = mid;
+        }
+        return array;
+    }
+
+
     // 小范围 解析折半插入排序使用
     public static void main(String[] args) {
 
-        String[] array = new String[10];
+        String[] array = new String[26];
         for(int i = 0; i < array.length; i ++)
-            array[i] = (char)(74 - i) + "";
+            array[i] = (char)(90 - i) + "";
 
+//        System.out.print("array:");
+//        for(int j = 0;j < array.length; j ++)
+//            System.out.print(array[j] + ", ");
+//        System.out.println();
+
+        array = reOrder(array);
         System.out.print("array:");
         for(int j = 0;j < array.length; j ++)
             System.out.print(array[j] + ", ");

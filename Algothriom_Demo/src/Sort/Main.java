@@ -1,15 +1,19 @@
 package Sort;
 
 
+import edu.princeton.cs.algs4.In;
+
 import java.io.*;
 
 
 public class Main {
+    static String[] testArray;
+
     public static void main(String[] args) {
 
         // 这里使用相对路径时，要注意，根目录(起始目录)为 Algothrim_Demo(项目文件夹)，并非java文件本身
         String filePath =
-                "src\\algo4-data\\32kints.txt";
+                "src\\algo4-data\\8kints.txt";
         // 通过文件路径获取文件
         File file = new File(filePath);
 
@@ -21,140 +25,27 @@ public class Main {
                 BufferedReader br = new BufferedReader(fileReader);
                 String lineContent = null;
                 // algs4-data\\1Kints.txt 有1000行数据
-                String[] testArray = new String[32000];
+                testArray = new String[10];
                 int i = 0;
-                while ((lineContent = br.readLine()) != null) {
+                while ((lineContent = br.readLine()) != null && i < 10) {
                     testArray[i] = lineContent;
                     i ++;
                 }
 
-                long startTime1 = System.nanoTime();
-                SelectSort.sort(testArray);
-                long endTime1 = System.nanoTime();
-                System.out.println(
-                        "选择排序, " + testArray.length + "个数据，执行时间为：" +
-                                (endTime1 - startTime1) / 1000000000.0 + " s");
-
-                long startTime2 = System.nanoTime();
-                insertSort.sort(testArray);
-                long endTime2 = System.nanoTime();
-                System.out.println(
-                        "插入排序, " + testArray.length + "个数据，执行时间为：" +
-                                (endTime2 - startTime2) / 1000000000.0 + " s");
-
-                long startTime3 = System.nanoTime();
-                ShellSort.sort(testArray);
-                long endTime3 = System.nanoTime();
-                System.out.println(
-                        "希尔排序, " + testArray.length + "个数据，执行时间为：" +
-                                (endTime3 - startTime3) / 1000000000.0 + " s");
-
-                long startTime4 = System.nanoTime();
-                MergeSort.sort(testArray);
-                long endTime4 = System.nanoTime();
-                System.out.println(
-                        "自顶向下归并排序, " + testArray.length + "个数据，执行时间为：" +
-                                (endTime4 - startTime4) / 1000000000.0 + " s");
-
-                long startTime5 = System.nanoTime();
-                MergeSort.sort(testArray);
-                long endTime5 = System.nanoTime();
-                System.out.println(
-                        "自底向上归并排序, " + testArray.length + "个数据，执行时间为：" +
-                                (endTime5 - startTime5) / 1000000000.0 + " s");
-
-                long startTime6 = System.nanoTime();
-                QuickSort.sort(testArray);
-                long endTime6 = System.nanoTime();
-                System.out.println(
-                        "快速排序, " + testArray.length + "个数据，执行时间为：" +
-                                (endTime6 - startTime6) / 1000000000.0 + " s");
-
-                long startTime7 = System.nanoTime();
-                QuickSortpro1.sort(testArray);
-                long endTime7 = System.nanoTime();
-                System.out.println(
-                        "快速排序改进1, " + testArray.length + "个数据，执行时间为：" +
-                                (endTime7 - startTime7) / 1000000000.0 + " s");
-
-                long startTime8 = System.nanoTime();
-                QuickSortpro2.sort(testArray);
-                long endTime8 = System.nanoTime();
-                System.out.println(
-                        "快速排序改进2, " + testArray.length + "个数据，执行时间为：" +
-                                (endTime8 - startTime8) / 1000000000.0 + " s");
-
-                long startTime9 = System.nanoTime();
-                QuickSortpro1.sort(testArray);
-                long endTime9 = System.nanoTime();
-                System.out.println(
-                        "快速排序改进3, " + testArray.length + "个数据，执行时间为：" +
-                                (endTime9 - startTime9) / 1000000000.0 + " s");
-
-
-                UnorderedArrayTopM unorderedArrayTopM = new UnorderedArrayTopM(testArray.length);
-                long startTime10 = System.nanoTime();
-                for(Comparable element:testArray)
-                    unorderedArrayTopM.insert(element);
-                long endTime10 = System.nanoTime();
-                System.out.println(
-                        "无序数组实现的优先队列, 添加" + testArray.length + "个数据，执行时间为：" +
-                                (endTime10 - startTime10) / 1000000000.0 + " s");
-
-                long startTime11 = System.nanoTime();
-                unorderedArrayTopM.delMax();
-                long endTime11 = System.nanoTime();
-
-                System.out.println(
-                        "无序数组实现的优先队列, 删除最大元素，执行时间为：" +
-                                (endTime11 - startTime11) / 1000000000.0 + " s");
-
-
-                OrderedArrayTopM orderedArrayTopM = new OrderedArrayTopM(testArray.length);
-                long startTime12 = System.nanoTime();
-                for(Comparable element:testArray)
-                    orderedArrayTopM.insert(element);
-                long endTime12 = System.nanoTime();
-                long startTime13 = System.nanoTime();
-                orderedArrayTopM.delMax();
-                long endTime13 = System.nanoTime();
-                System.out.println(
-                        "有序数组实现的优先队列, 添加" + testArray.length + "个数据，执行时间为：" +
-                                (endTime12 - startTime12) / 1000000000.0 + " s");
-                System.out.println(
-                        "有序数组实现的优先队列, 删除最大元素，执行时间为：" +
-                                (endTime13 - startTime13) / 1000000000.0 + " s");
-
-
-                MaxPQ maxPQ = new MaxPQ(testArray.length);
-                long startTime14 = System.nanoTime();
-                for(Comparable element:testArray)
-                    maxPQ.insert(element);
-                long endTime14 = System.nanoTime();
-                long startTime15 = System.nanoTime();
-                maxPQ.delMax();
-                long endTime15 = System.nanoTime();
-                System.out.println(
-                        "基于堆实现的优先队列, 添加" + testArray.length + "个数据，执行时间为：" +
-                                (endTime14 - startTime14) / 1000000000.0 + " s");
-                System.out.println(
-                        "基于堆实现的优先队列, 删除最大元素，执行时间为：" +
-                                (endTime15 - startTime15) / 1000000000.0 + " s");
-
-                long startTime16 = System.nanoTime();
-                BubbleSort.sort(testArray);
-                long endTime16 = System.nanoTime();
-                System.out.println(
-                        "冒泡排序, " + testArray.length + "个数据，执行时间为：" +
-                                (endTime16 - startTime16) / 1000000000.0 + " s");
-
-                long startTime17 = System.nanoTime();
-                binaryInsertSort.sort(testArray);
-                long endTime17 = System.nanoTime();
-                System.out.println(
-                        "折半插入排序, " + testArray.length + "个数据，执行时间为：" +
-                                (endTime17 - startTime17) / 1000000000.0 + " s");
-
+                Bubble();
+                Insert();
+                bintaryInsert();
+                Select();
+                Shell();
+                Merge();
+//                MergeBU();
+                Quick();
+                Quick1();
+                Quick2();
+                Quick3();
+                unorderedArray();
+                orderedArray();
+                MaxPQAddDel();
 
                 br.close();
                 fileReader.close();
@@ -169,4 +60,175 @@ public class Main {
             }
         }
     }
+
+    // 调用冒泡排序
+    private static void Bubble(){
+        long startTime = System.nanoTime();
+        BubbleSort.sort(testArray);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "冒泡排序, " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+    }
+
+    // 调用插入排序
+    private static void Insert(){
+        long startTime = System.nanoTime();
+        insertSort.sort(testArray);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "顺序插入排序, " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+    }
+
+    // 调用折半插入排序
+    private static void bintaryInsert(){
+        long startTime = System.nanoTime();
+        binaryInsertSort.sort(testArray);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "折半插入排序, " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+    }
+
+    // 调用选择排序
+    private static void Select(){
+        long startTime = System.nanoTime();
+        SelectSort.sort(testArray);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "选择排序, " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+    }
+
+    // 调用希尔排序
+    private static void Shell(){
+        long startTime = System.nanoTime();
+        ShellSort.sort(testArray);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "希尔排序, " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+    }
+
+    // 调用自顶向下归并排序
+    private static void Merge(){
+        long startTime = System.nanoTime();
+        MergeSort.sort(testArray);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "自顶向下排序, " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+    }
+
+    // 调用自顶向上归并排序
+    private static void MergeBU(){
+        long startTime = System.nanoTime();
+        MergeSortBU.sort(testArray);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "自顶向下排序, " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+    }
+
+    //调用快速排序
+    private static void Quick(){
+        long startTime = System.nanoTime();
+        QuickSort.sort(testArray);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "快速排序, " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+    }
+
+    // 快速排序1
+    private static void Quick1(){
+        long startTime = System.nanoTime();
+        QuickSortpro1.sort(testArray);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "快速排序改进1, " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+    }
+
+    // 快速排序1
+    private static void Quick2(){
+        long startTime = System.nanoTime();
+        QuickSortpro2.sort(testArray);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "快速排序改进2, " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+    }
+
+    // 快速排序3
+    private static void Quick3(){
+        long startTime = System.nanoTime();
+        QuickSortpro3.sort(testArray);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "快速排序改进1, " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+    }
+
+    // 无序数组实现的优先队列  添加元素  删除最大元素
+    private static void unorderedArray(){
+        UnorderedArrayTopM unorderedArrayTopM = new UnorderedArrayTopM(testArray.length);
+        long startTime = System.nanoTime();
+        for(Comparable element:testArray)
+            unorderedArrayTopM.insert(element);
+        long endTime = System.nanoTime();
+        System.out.println(
+                "无序数组实现的优先队列, 添加 " + testArray.length + "个数据，执行时间为：" +
+                        (endTime - startTime) / 1000000000.0 + " s");
+
+        long startTime1 = System.nanoTime();
+        unorderedArrayTopM.delMax();
+        long endTime1 = System.nanoTime();
+
+        System.out.println(
+                "无序数组实现的优先队列, 删除最大元素，执行时间为：" +
+                        (endTime1 - startTime1) / 1000000000.0 + " s");
+    }
+
+    // 有序数组实现的优先队列
+    private static void orderedArray(){
+        OrderedArrayTopM orderedArrayTopM = new OrderedArrayTopM(testArray.length);
+        long startTime1 = System.nanoTime();
+        for(Comparable element:testArray)
+            orderedArrayTopM.insert(element);
+        long endTime1 = System.nanoTime();
+        long startTime2 = System.nanoTime();
+        orderedArrayTopM.delMax();
+        long endTime2 = System.nanoTime();
+        System.out.println(
+                "有序数组实现的优先队列, 添加" + testArray.length + "个数据，执行时间为：" +
+                        (endTime1 - startTime1) / 1000000000.0 + " s");
+        System.out.println(
+                "有序数组实现的优先队列, 删除最大元素，执行时间为：" +
+                        (endTime2 - startTime2) / 1000000000.0 + " s");
+    }
+
+    // 基于堆实现的优先队列
+    private  static void MaxPQAddDel(){
+        MaxPQ maxPQ = new MaxPQ(testArray.length);
+        long startTime1 = System.nanoTime();
+        for(Comparable element:testArray)
+            maxPQ.insert(element);
+        long endTime1 = System.nanoTime();
+        long startTime2 = System.nanoTime();
+        maxPQ.delMax();
+        long endTime2 = System.nanoTime();
+        System.out.println(
+                "基于堆实现的优先队列, 添加" + testArray.length + "个数据，执行时间为：" +
+                        (endTime1 - startTime1) / 1000000000.0 + " s");
+        System.out.println(
+                "基于堆实现的优先队列, 删除最大元素，执行时间为：" +
+                        (endTime2 - startTime2) / 1000000000.0 + " s");
+    }
+
+
+
+
+
 }
